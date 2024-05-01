@@ -1,0 +1,6 @@
+@RSMFinalProject_HostAddress = http://localhost:5001
+
+GET {{RSMFinalProject_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
