@@ -6,7 +6,6 @@
         DateTime? EndDate,
         string? CustomerName,
         string? SalesPersonName,
-        string? ProductName,
-        int? ProductCategoryId
+        int? SalesTerritoryId
     );
 }

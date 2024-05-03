@@ -1,6 +1,4 @@
-using Microsoft.EntityFrameworkCore;
 using RSMFinalProject.API.ExceptionHandler;
-using RSMFinalProject.DAL.DbContext;
 using RSMFinalProject.IOC;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,14 +14,20 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 builder.Services.InjectDependencies(builder.Configuration);
 
-var app = builder.Build();
-app.UseExceptionHandler();
-
-using (var scope = app.Services.CreateScope())
+builder.Services.AddCors(options =>
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<AdventureWorksContext>();
-    dbContext.Database.Migrate();
-}
+    options.AddPolicy("AllowLocalhost",
+        policy =>
+        {
+            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        }
+    );
+});
+
+var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -34,6 +38,9 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseHttpsRedirection();
+app.UseExceptionHandler();
+
+app.UseCors("AllowLocalhost");
 
 app.UseAuthorization();
 

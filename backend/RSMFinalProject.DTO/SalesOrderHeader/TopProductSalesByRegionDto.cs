@@ -6,9 +6,9 @@
         string ProductCategory,
         decimal TotalSales,
         string Territory,
-        decimal TotalSalesByRegionPercentage,
-        decimal TotalCategorySalesByRegionPercentage,
-        string CategorySalesComparedWithPreviousQuarter,
-        string TerritorySalesComparedWithPreviousQuarter
+        decimal SalesByRegion,
+        decimal CategorySalesByRegion,
+        string CategoryLastQuarter,
+        string TerritoryLastQuarter
     );
 }

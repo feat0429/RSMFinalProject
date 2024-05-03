@@ -15,7 +15,7 @@
                 .GreaterThanOrEqualTo(s => s.StartDate)
                 .When(s => s.StartDate is not null);
 
-            RuleFor(filter => filter.ProductCategoryId)
+            RuleFor(filter => filter.SalesTerritoryId)
                 .GreaterThan(0);
         }
     }

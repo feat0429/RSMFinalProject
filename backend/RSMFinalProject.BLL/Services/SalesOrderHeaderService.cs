@@ -4,7 +4,6 @@
     using FluentValidation;
     using RSMFinalProject.BLL.Services.Contract;
     using RSMFinalProject.DAL.Repositories.Contract;
-    using RSMFinalProject.DTO.PagedList;
     using RSMFinalProject.DTO.Pagination;
     using RSMFinalProject.DTO.SalesOrderHeader;
     using RSMFinalProject.DTO.SalesOrderHeader.Filters;
@@ -42,14 +41,10 @@
             return salesReportDtos;
         }
 
-        public Task<IEnumerable<TopProductSalesByRegionDto>> GetTopSalesByRegionReport(TopSalesByRegionReportFiltersDto filterCriteria)
+        public async Task<IEnumerable<TopProductSalesByRegionDto>> GetTopSalesByRegion()
         {
-            var validationResults = _topSalesByRegionReportFilterDtoValidator.Validate(filterCriteria);
 
-            if (!validationResults.IsValid)
-                throw new ValidationException(validationResults.Errors);
-
-            return _salesOrderHeaderRepository.GetTopSalesByRegionReport(filterCriteria);
+            return await _salesOrderHeaderRepository.GetTopSalesByRegion();
         }
     }
 }

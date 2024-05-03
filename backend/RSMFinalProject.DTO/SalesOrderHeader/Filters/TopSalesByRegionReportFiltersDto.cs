@@ -2,8 +2,7 @@
 {
     public record TopSalesByRegionReportFiltersDto
     (
-        int ResultCount,
-        DateTime? FilterDate,
+        DateTime FilterDate,
         string? ProductName,
         int? ProductCategoryId,
         int? TerritoryId

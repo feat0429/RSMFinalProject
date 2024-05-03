@@ -17,7 +17,7 @@
         }
 
         [HttpGet]
-        [Route("/search")]
+        [Route("search")]
         public async Task<IActionResult> SearchSalesOrders([FromQuery] PaginationParamsDto paginationParams, [FromQuery] SalesSearchtFiltersDto filterCriteria)
         {
             var salesOrdersDtos = await _salesOrderHeaderService.GetSalesReport(paginationParams, filterCriteria);
@@ -26,20 +26,13 @@
         }
 
         [HttpGet]
-        [Route("/report/top-by-region")]
-        public async Task<IActionResult> GetTopSalesByRegionReport([FromQuery] TopSalesByRegionReportFiltersDto filterCriteria)
+        [Route("report/top-by-region")]
+        public async Task<IActionResult> GetTopSalesByRegionReport()
         {
-            var salesReportDtos = await _salesOrderHeaderService.GetTopSalesByRegionReport(filterCriteria);
+            var topSalesDtos = await _salesOrderHeaderService.GetTopSalesByRegion();
 
-            return Ok(salesReportDtos);
+            return Ok(topSalesDtos);
         }
 
-
-        [HttpPost]
-        [Route("")]
-        public IActionResult Test([FromBody] SalesSearchtFiltersDto filterCriteria)
-        {
-            return Ok(":D");
-        }
     }
 }

@@ -11,6 +11,7 @@ namespace RSMFinalProject.DTO.SalesOrderHeader
         string BillingAddress,
         decimal SubTotal,
         decimal TotalDue,
+        string SalesTerritory,
         IEnumerable<SalesOrderDetailReportDto> SalesOrderDetails
     );
 }

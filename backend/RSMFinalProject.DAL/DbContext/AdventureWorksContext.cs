@@ -31,11 +31,11 @@ namespace RSMFinalProject.DAL.DbContext
         public virtual DbSet<SalesOrderDetail> SalesOrderDetails { get; set; }
 
         public virtual DbSet<SalesOrderHeader> SalesOrderHeaders { get; set; }
+        public virtual DbSet<SalesTerritory> SalesTerritories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
-
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }

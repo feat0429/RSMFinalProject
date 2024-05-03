@@ -120,6 +120,9 @@
             builder.HasOne(d => d.ShipToAddress).WithMany(p => p.SalesOrderHeaderShipToAddresses)
                 .HasForeignKey(d => d.ShipToAddressId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
+
+            builder.HasOne(d => d.SalesTerritory).WithMany(p => p.SalesOrderHeaders)
+                .HasForeignKey(d => d.TerritoryId);
         }
     }
 }

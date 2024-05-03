@@ -2,7 +2,7 @@
 {
     using AutoMapper;
     using RSMFinalProject.DAL.Pagination;
-    using RSMFinalProject.DTO.PagedList;
+    using RSMFinalProject.DTO.Pagination;
     using RSMFinalProject.DTO.SalesOrderHeader;
     using RSMFinalProject.Model;
     public class SalesOrderHeaderProfile : Profile
@@ -21,9 +21,13 @@
             .ForCtorParam(nameof(SalesReportDto.ShippingAddress),
                 opt => opt.MapFrom(source => source.ShipToAddress.AddressLine1))
             .ForCtorParam(nameof(SalesReportDto.BillingAddress),
-                opt => opt.MapFrom(source => source.BillToAddress.AddressLine1));
+                opt => opt.MapFrom(source => source.BillToAddress.AddressLine1))
+            .ForCtorParam(nameof(SalesReportDto.SalesTerritory),
+                opt => opt.MapFrom(source => source.SalesTerritory.Name));
 
             CreateMap<PagedList<SalesOrderHeader>, PagedListDto<SalesReportDto>>();
+            CreateMap<PagedList<TopProductSalesByRegionDto>, PagedListDto<TopProductSalesByRegionDto>>();
+
         }
     }
 }

@@ -24,7 +24,8 @@
 
             services.AddDbContext<AdventureWorksContext>(options =>
             {
-                options.UseSqlServer(
+                options
+                .UseSqlServer(
                     configuration.GetConnectionString("localConnection"));
             });
 
@@ -33,8 +34,12 @@
             services.AddAutoMapper(s_businessLogicLayerAssembly);
 
             services.AddScoped<ISalesOrderHeaderRepository, SalesOrderHeaderRepository>();
+            services.AddScoped<ISalesTerritoryRepository, SalesTerritoryRepository>();
+
 
             services.AddScoped<ISalesOrderHeaderService, SalesOrderHeaderService>();
+            services.AddScoped<ISalesTerritoryService, SalesTerritoryService>();
+
         }
     }
 }

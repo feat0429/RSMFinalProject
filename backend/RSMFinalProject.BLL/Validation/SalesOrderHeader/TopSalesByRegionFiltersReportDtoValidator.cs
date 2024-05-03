@@ -7,9 +7,8 @@
     {
         public TopSalesByRegionFiltersReportDtoValidator()
         {
-            RuleFor(filter => filter.ResultCount)
-                .NotNull()
-                .InclusiveBetween(1, 100);
+            RuleFor(filter => filter.FilterDate)
+                .NotNull();
 
             RuleFor(filter => filter.ProductCategoryId)
                 .GreaterThan(0);

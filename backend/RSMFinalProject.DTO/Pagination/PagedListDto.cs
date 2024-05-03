@@ -1,4 +1,4 @@
-﻿namespace RSMFinalProject.DTO.PagedList
+﻿namespace RSMFinalProject.DTO.Pagination
 {
     using System.Collections.Generic;
     public record PagedListDto<T>

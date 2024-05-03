@@ -10,7 +10,7 @@ namespace RSMFinalProject.DAL.Repositories.Contract
     public interface ISalesOrderHeaderRepository
     {
         Task<PagedList<SalesOrderHeader>> SearchSalesOrders(PaginationParamsDto paginationParams, SalesSearchtFiltersDto filterCriteria);
-        Task<IEnumerable<TopProductSalesByRegionDto>> GetTopSalesByRegionReport(TopSalesByRegionReportFiltersDto filterCriteria);
+        Task<IEnumerable<TopProductSalesByRegionDto>> GetTopSalesByRegion();
 
     }
 }

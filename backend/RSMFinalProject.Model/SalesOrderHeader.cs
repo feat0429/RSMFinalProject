@@ -145,4 +145,6 @@ public partial class SalesOrderHeader
 
     public virtual Address ShipToAddress { get; set; } = null!;
 
+    public virtual SalesTerritory SalesTerritory { get; set; } = null!;
+
 }
