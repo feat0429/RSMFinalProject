@@ -67,7 +67,7 @@ export function TopSalesToolbar ({ rows, columns }: Props) {
 
   return (
         <>
-            <Box sx={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'row', gap: '10px' }} >
               <Button
                 size='small'
                 variant='outlined'

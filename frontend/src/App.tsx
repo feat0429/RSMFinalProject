@@ -15,8 +15,8 @@ function App () {
     , [])
 
   let component
-
-  switch (window.location.pathname) {
+  const pathname = window.location.pathname
+  switch (pathname) {
     case '/':
       component = <TopSalesReport />
       break
@@ -37,12 +37,12 @@ function App () {
         margin={3}
       >
         <Button
-          variant='outlined'
+          variant={`${pathname === '/' ? 'contained' : 'outlined'}`}
           href='/'>
-            Top Sales Ordes
+            Top Sales Report
         </Button>
         <Button
-          variant='outlined'
+          variant={`${pathname === '/sales-orders-report' ? 'contained' : 'outlined'}`}
           href='/sales-orders-report'>
             Sales Orders Report
         </Button>
