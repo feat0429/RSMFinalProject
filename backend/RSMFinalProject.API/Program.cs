@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.OpenApi.Models;
 using RSMFinalProject.API.ExceptionHandler;
 using RSMFinalProject.IOC;
 using System.Reflection;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +41,18 @@ builder.Services.AddCors(options =>
     );
 });
 
+builder.Services.AddRateLimiter(limiterOptions =>
+{
+    limiterOptions.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    limiterOptions.AddFixedWindowLimiter("fixed", options =>
+    {
+        options.PermitLimit = 5;
+        options.Window = TimeSpan.FromSeconds(10);
+        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        options.QueueLimit = 1;
+    });
+});
+
 var app = builder.Build();
 
 
@@ -52,6 +66,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseExceptionHandler();
+
+app.UseRateLimiter();
 
 app.UseCors("AllowLocalhost");
 
