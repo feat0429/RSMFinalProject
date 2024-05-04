@@ -13,6 +13,7 @@
     public class SalesOrderHeaderRepository : ISalesOrderHeaderRepository
     {
         private readonly AdventureWorksContext _dbContext;
+        private readonly static string s_collation = "SQL_LATIN1_GENERAL_CP1_CI_AI";
 
         public SalesOrderHeaderRepository(AdventureWorksContext dbContext)
         {
@@ -56,14 +57,18 @@
 
             if (!string.IsNullOrWhiteSpace(filterCriteria.CustomerName))
             {
-                query = query.Where(salesOrder => salesOrder.Customer.Person!.FirstName.Contains(filterCriteria.CustomerName)
-                || salesOrder.Customer.Person!.LastName.Contains(filterCriteria.CustomerName));
+                query = query.Where(salesOrder => EF.Functions.Collate(
+                    salesOrder.Customer.Person!.FirstName +
+                    salesOrder.Customer.Person!.LastName, s_collation)
+                    .Contains(filterCriteria.CustomerName));
             }
 
             if (!string.IsNullOrWhiteSpace(filterCriteria.SalesPersonName))
             {
-                query = query.Where(salesOrder => salesOrder.SalesPerson!.FirstName.Contains(filterCriteria.SalesPersonName)
-                || salesOrder.SalesPerson.LastName.Contains(filterCriteria.SalesPersonName));
+                query = query.Where(salesOrder => EF.Functions.Collate(
+                    salesOrder.SalesPerson!.FirstName +
+                    salesOrder.SalesPerson.LastName, s_collation)
+                    .Contains(filterCriteria.SalesPersonName));
             }
 
             if (!string.IsNullOrWhiteSpace(filterCriteria.SalesTerritoryId.ToString()))
