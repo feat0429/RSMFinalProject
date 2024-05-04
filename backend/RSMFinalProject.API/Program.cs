@@ -54,7 +54,7 @@ builder.Services.AddRateLimiter(limiterOptions =>
     limiterOptions.AddFixedWindowLimiter("shortRate", options =>
     {
         options.PermitLimit = 1;
-        options.Window = TimeSpan.FromSeconds(3);
+        options.Window = TimeSpan.FromSeconds(10);
         options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
         options.QueueLimit = 1;
     });
