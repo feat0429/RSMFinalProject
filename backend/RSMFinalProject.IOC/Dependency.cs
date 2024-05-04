@@ -26,7 +26,8 @@
             {
                 options
                 .UseSqlServer(
-                    configuration.GetConnectionString("localConnection"));
+                    configuration.GetConnectionString("localConnection"),
+                    sqlServerOptions => sqlServerOptions.CommandTimeout(180));
             });
 
             services.AddValidatorsFromAssembly(s_businessLogicLayerAssembly);

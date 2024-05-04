@@ -84,7 +84,7 @@
         {
             var query = FormattableStringFactory.Create(
                 @"DECLARE @FilterDate DATETIME;
-                    SET @FilterDate = GETDATE();
+                    SET @FilterDate = '2013-12-31 00:00:00.000';
                     WITH ProductInfo AS 
 						(
 							SELECT 
@@ -153,7 +153,7 @@
 							INNER JOIN SalesDate sd
 								ON sd.SalesOrderID = soh.SalesOrderID
 						)
-						SELECT DISTINCT TOP 25
+						SELECT DISTINCT TOP 10
 						pi.ProductName
 						,pi.ProductCategory
 						,si.TotalSales

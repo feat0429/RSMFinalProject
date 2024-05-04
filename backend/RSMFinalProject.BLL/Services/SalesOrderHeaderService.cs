@@ -14,16 +14,14 @@
         private readonly ISalesOrderHeaderRepository _salesOrderHeaderRepository;
         private readonly IValidator<SalesSearchtFiltersDto> _salesReportFiltersDtoValidator;
         private readonly IValidator<PaginationParamsDto> _paginationParamsDtoValidator;
-        private readonly IValidator<TopSalesByRegionReportFiltersDto> _topSalesByRegionReportFilterDtoValidator;
         private readonly IMapper _mapper;
 
-        public SalesOrderHeaderService(ISalesOrderHeaderRepository salesOrderHeaderRepository, IMapper mapper, IValidator<SalesSearchtFiltersDto> salesReportFiltersDtoValidator, IValidator<PaginationParamsDto> paginationParamsDtoValidator, IValidator<TopSalesByRegionReportFiltersDto> topSalesByRegionReportFilterDtoValidator)
+        public SalesOrderHeaderService(ISalesOrderHeaderRepository salesOrderHeaderRepository, IMapper mapper, IValidator<SalesSearchtFiltersDto> salesReportFiltersDtoValidator, IValidator<PaginationParamsDto> paginationParamsDtoValidator)
         {
             _salesOrderHeaderRepository = salesOrderHeaderRepository;
             _mapper = mapper;
             _salesReportFiltersDtoValidator = salesReportFiltersDtoValidator;
             _paginationParamsDtoValidator = paginationParamsDtoValidator;
-            _topSalesByRegionReportFilterDtoValidator = topSalesByRegionReportFilterDtoValidator;
         }
 
         public async Task<PagedListDto<SalesReportDto>> GetSalesReport(PaginationParamsDto paginationParams, SalesSearchtFiltersDto filterCriteria)

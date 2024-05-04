@@ -12,7 +12,7 @@ import { useSalesOrdersTableColumns } from '../../hooks/useSalesOrdersTableColum
 export function SalesOrderTable () {
   const [pagination, setPagination] = useState<MRT_PaginationState>({
     pageIndex: 0,
-    pageSize: 10
+    pageSize: 20
   })
   const [filters, setFilters] = useState<SalesOrdersFilters>({})
 
@@ -65,7 +65,7 @@ export function SalesOrderTable () {
       showProgressBars: isFetching && !isLoading
     },
     muiPaginationProps: {
-      showRowsPerPage: false,
+      showRowsPerPage: true,
       siblingCount: 2
     },
     muiToolbarAlertBannerProps: isError

@@ -18,10 +18,10 @@ function App () {
 
   switch (window.location.pathname) {
     case '/':
-      component = <SalesOrdersReport />
-      break
-    case '/top-sales-report':
       component = <TopSalesReport />
+      break
+    case '/sales-orders-report':
+      component = <SalesOrdersReport />
       break
   }
   return (
@@ -38,13 +38,13 @@ function App () {
       >
         <Button
           variant='outlined'
-          href='/'>
-            Sales Orders Report
+          href='/top-sales-report'>
+            Top Sales Ordes
         </Button>
         <Button
           variant='outlined'
-          href='/top-sales-report'>
-            Top Sales Ordes
+          href='/'>
+            Sales Orders Report
         </Button>
       </Box>
 
