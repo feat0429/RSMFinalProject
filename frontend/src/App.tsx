@@ -27,7 +27,7 @@ function App () {
   return (
     <ThemeProvider theme={globalTheme}>
       <Typography variant='h1'>
-        Aventure Works
+        Adventure Works
       </Typography>
       <Box
         gap={4}
