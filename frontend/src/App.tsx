@@ -38,12 +38,12 @@ function App () {
       >
         <Button
           variant='outlined'
-          href='/top-sales-report'>
+          href='/'>
             Top Sales Ordes
         </Button>
         <Button
           variant='outlined'
-          href='/'>
+          href='/sales-orders-report'>
             Sales Orders Report
         </Button>
       </Box>
