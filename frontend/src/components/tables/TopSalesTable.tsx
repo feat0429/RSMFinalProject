@@ -25,6 +25,8 @@ export function TopSalesTable () {
     columns,
     data: results,
     enableTopToolbar: true,
+    enableSorting: false,
+    enableFilters: false,
     initialState: {
       density: 'compact'
     },

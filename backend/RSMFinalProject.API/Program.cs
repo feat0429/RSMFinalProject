@@ -44,10 +44,17 @@ builder.Services.AddCors(options =>
 builder.Services.AddRateLimiter(limiterOptions =>
 {
     limiterOptions.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
-    limiterOptions.AddFixedWindowLimiter("fixed", options =>
+    limiterOptions.AddFixedWindowLimiter("largeRate", options =>
     {
         options.PermitLimit = 5;
         options.Window = TimeSpan.FromSeconds(10);
+        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        options.QueueLimit = 1;
+    });
+    limiterOptions.AddFixedWindowLimiter("shortRate", options =>
+    {
+        options.PermitLimit = 1;
+        options.Window = TimeSpan.FromSeconds(3);
         options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
         options.QueueLimit = 1;
     });

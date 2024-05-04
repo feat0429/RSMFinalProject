@@ -24,7 +24,7 @@
         /// <response code="200">Returns sales orders that meet filter criteria. It can return an empty array.</response>   
         /// <response code="400">If filter criteria parameters are not valid.</response>   
         [HttpGet]
-        [EnableRateLimiting("fixed")]
+        [EnableRateLimiting("largeRate")]
         [ProducesResponseType(typeof(PagedListDto<SalesReportDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
@@ -42,7 +42,7 @@
         /// <returns>Returns the top 10 product sales by region ordered percentage of sales in the region.</returns>
         /// <response code="200">Returns up to a maximum of 10 records that can cahnge over time.</response>   
         [HttpGet]
-        [EnableRateLimiting("fixed")]
+        [EnableRateLimiting("shortRate")]
         [ProducesResponseType(typeof(IEnumerable<TopProductSalesByRegionDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         [Route("report/top-by-region")]
